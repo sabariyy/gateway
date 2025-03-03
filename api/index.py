@@ -33,5 +33,6 @@ def check_payment_status():
     else:
         return jsonify({"status": "pending", "message": "Payment not yet received."})
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
+# Vercel requires the app to be wrapped in a `handler` function
+def handler(request):
+    return app(request)
